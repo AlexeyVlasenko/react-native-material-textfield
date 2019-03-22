@@ -54,16 +54,16 @@ export default class Label extends PureComponent {
       let toValue = this.inputState(props);
 
       Animated
-        .timing(input, { toValue, duration })
-        .start();
+          .timing(input, { toValue, duration })
+          .start();
     }
 
     if (focused ^ props.focused || errored ^ props.errored) {
       let toValue = this.focusState(props);
 
       Animated
-        .timing(focus, { toValue, duration })
-        .start();
+          .timing(focus, { toValue, duration })
+          .start();
     }
   }
 
@@ -89,18 +89,18 @@ export default class Label extends PureComponent {
       basePadding,
       style,
       errored,
-      active, 
+      active,
       focused,
       animationDuration,
       ...props
     } = this.props;
 
     let color = restricted?
-      errorColor:
-      focus.interpolate({
-        inputRange: [-1, 0, 1],
-        outputRange: [errorColor, baseColor, tintColor],
-      });
+        errorColor:
+        focus.interpolate({
+          inputRange: [-1, 0, 1],
+          outputRange: [errorColor, baseColor, tintColor],
+        });
 
     let top = input.interpolate({
       inputRange: [0, 1],
@@ -115,8 +115,8 @@ export default class Label extends PureComponent {
         inputRange: [0, 1],
         outputRange: [fontSize, activeFontSize],
       }),
-
       color,
+      lineHeight: 16
     };
 
     let containerStyle = {
@@ -125,11 +125,11 @@ export default class Label extends PureComponent {
     };
 
     return (
-      <Animated.View style={containerStyle}>
-        <Animated.Text style={[style, textStyle]} {...props}>
-          {children}
-        </Animated.Text>
-      </Animated.View>
+        <Animated.View style={containerStyle}>
+          <Animated.Text style={[style, textStyle]} {...props}>
+            {children}
+          </Animated.Text>
+        </Animated.View>
     );
   }
 }
